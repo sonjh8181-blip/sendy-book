@@ -1,0 +1,6 @@
+{
+  "name": "도서관 좌석 예약 시스템",
+  "description": "구글 앱스 스크립트(Google Apps Script) API 연동 실시간 도서관 좌석 현황 대시보드 및 예약/취소 웹 애플리케이션",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
