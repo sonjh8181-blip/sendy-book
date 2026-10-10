@@ -62,7 +62,7 @@ export async function getSeats(): Promise<{ seats: Seat[]; source: 'proxy' | 'di
       method: 'GET',
       headers: { Accept: 'application/json' },
     });
-    if (res.ok) {
+    if (res.ok && res.headers.get('content-type')?.includes('application/json')) {
       const data: ApiResponse = await res.json();
       if (data.status === 'success' && Array.isArray(data.seats)) {
         return { seats: data.seats, source: 'proxy' };
@@ -117,7 +117,7 @@ export async function reserveSeat(params: {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
-    if (res.ok) {
+    if (res.ok && res.headers.get('content-type')?.includes('application/json')) {
       result = await res.json();
     } else {
       throw new Error(`Proxy error ${res.status}`);
@@ -186,7 +186,7 @@ export async function cancelReservation(params: {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
-    if (res.ok) {
+    if (res.ok && res.headers.get('content-type')?.includes('application/json')) {
       result = await res.json();
     } else {
       throw new Error(`Proxy error ${res.status}`);
